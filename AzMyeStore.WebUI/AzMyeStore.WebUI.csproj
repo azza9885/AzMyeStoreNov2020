@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,6 +236,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\ProductManager\Index.cshtml" />
+    <Content Include="Views\ProductManager\Create.cshtml" />
+    <Content Include="Views\ProductManager\Edit.cshtml" />
+    <Content Include="Views\ProductManager\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -251,6 +256,24 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AzMyeStoreNov2020.Core\AzMyeStoreNov2020.Core.csproj">
+      <Project>{86cb4fd1-b5a3-4975-b770-c74a92a6bb4b}</Project>
+      <Name>AzMyeStoreNov2020.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AzMyeStoreNov2020.DataAccess.InMemory\AzMyeStoreNov2020.DataAccess.InMemory.csproj">
+      <Project>{2f9ea19a-9d8f-4bcd-8d4b-792d332f38a0}</Project>
+      <Name>AzMyeStoreNov2020.DataAccess.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AzMyeStoreNov2020.DataAccess.SQL\AzMyeStoreNov2020.DataAccess.SQL.csproj">
+      <Project>{4ba2643d-4bc6-4a15-a300-819b73b237d3}</Project>
+      <Name>AzMyeStoreNov2020.DataAccess.SQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AzMyeStoreNov2020.Services\AzMyeStoreNov2020.Services.csproj">
+      <Project>{70b869bf-68d1-4447-b56b-19935a5d5bb3}</Project>
+      <Name>AzMyeStoreNov2020.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
