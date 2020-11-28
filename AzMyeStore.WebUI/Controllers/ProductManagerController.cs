@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AzMyeStoreNov2020.Core.Models;
+using AzMyeStoreNov2020.Core.ViewModels;
 using AzMyeStoreNov2020.DataAccess.InMemory;
 
 namespace AzMyeStore.WebUI.Controllers
@@ -11,10 +12,13 @@ namespace AzMyeStore.WebUI.Controllers
     public class ProductManagerController : Controller
     {
         ProductRepository context;
+        ProductCategoryRepository productCategories; // creating of context of ProductCategoryRepository so that it can be added to Create and Edit Action results
+                                                     // to load the product categories from the database
 
         public ProductManagerController()  // this constructor initializes the Product repository context
         {
             context = new ProductRepository();
+            productCategories = new ProductCategoryRepository();
         }
 
 
@@ -28,8 +32,13 @@ namespace AzMyeStore.WebUI.Controllers
 
        public ActionResult Create()  // first method is display the page to fill in the product details
         {
-            Product product = new Product();
-            return View(product);
+            //Product product = new Product();
+            //return View(product);
+
+            ProductManagerViewModel viewModel = new ProductManagerViewModel();
+            viewModel.Product = new Product();
+            viewModel.ProductCategories = productCategories.Collection();
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -61,7 +70,15 @@ namespace AzMyeStore.WebUI.Controllers
  
             else
             {
-                return View(product);
+                //return View(product);
+                // we are getting an empty product or the product we loaded from the database
+                // and instead of using that product view , we are using the viewModel view to 
+                // list the product and all the productCategories from the database.
+                // since we are using a different view model, we need to update the view Pages
+                ProductManagerViewModel viewModel = new ProductManagerViewModel();
+                viewModel.Product = product;
+                viewModel.ProductCategories = productCategories.Collection();
+                return View(viewModel);
             }
         }
 
