@@ -1,4 +1,5 @@
-﻿using AzMyeStoreNov2020.Core.Models;
+﻿using AzMyeStoreNov2020.Core.Contracts;
+using AzMyeStoreNov2020.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,11 @@ using System.Threading.Tasks;
 
 namespace AzMyeStoreNov2020.DataAccess.InMemory
 {
-    public class InMemoryRepository<T> where T : BaseEntity  // T indicates we are creating a generic class , T is just an identifier it can be any letter or word 
-                                        // to indicate that it is going to be a generic class
+    // Dependency Inversion principle states you should code against Interfaces and not concrete classes, Core C# Object oriented programming pattern
+    // interface is a list of all methods and properties that a class exposes but it doesnt implement, instead we create another concrete class 
+    // that implements them
+    public class InMemoryRepository<T> : IRepository<T> where T : BaseEntity  // T indicates we are creating a generic class , T is just an identifier it can be any letter or word 
+                                                                                      // to indicate that it is going to be a generic class
     {
         ObjectCache cache = MemoryCache.Default;
         List<T> items;  // a  generic list place holder which can be used to created a list of products or product categories and can be extended further

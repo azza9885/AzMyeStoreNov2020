@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AzMyeStoreNov2020.Core.Contracts;
 using AzMyeStoreNov2020.Core.Models;
 using AzMyeStoreNov2020.DataAccess.InMemory;
 
@@ -11,11 +12,11 @@ namespace AzMyeStore.WebUI.Controllers
     public class ProductCategoryManagerController : Controller
     {
 
-        InMemoryRepository<ProductCategory> context;
+        IRepository<ProductCategory> context;
 
-        public ProductCategoryManagerController()  // this constructor initializes the Product repository context
+        public ProductCategoryManagerController(IRepository<ProductCategory> productCategoryContext)  // this constructor initializes the Product repository context
         {
-            context = new InMemoryRepository<ProductCategory>();
+            this.context = productCategoryContext;
         }
 
         // GET: ProductCategoryManager
