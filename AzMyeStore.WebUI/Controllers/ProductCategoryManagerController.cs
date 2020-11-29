@@ -10,12 +10,12 @@ namespace AzMyeStore.WebUI.Controllers
 {
     public class ProductCategoryManagerController : Controller
     {
-        
-        ProductCategoryRepository context;
+
+        InMemoryRepository<ProductCategory> context;
 
         public ProductCategoryManagerController()  // this constructor initializes the Product repository context
         {
-            context = new ProductCategoryRepository();
+            context = new InMemoryRepository<ProductCategory>();
         }
 
         // GET: ProductCategoryManager

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace AzMyeStoreNov2020.Core.Models
 {
-    public class Product
+    public class Product : BaseEntity
     {
-        public string Id { get; set; }
+        //public string Id { get; set; }  // commenting this out since this is implemented in the base class
 
         [StringLength(20)]
         [DisplayName("Product Name")]
@@ -25,10 +25,11 @@ namespace AzMyeStoreNov2020.Core.Models
 
         public string Image { get; set; }
 
-        public Product()
-        {
+        // commenting this constructor out since the Id initialization is implemented in the base class
+        //public Product()
+        //{
 
-            this.Id = Guid.NewGuid().ToString();
-        }
+        //    this.Id = Guid.NewGuid().ToString();
+        //}
     }
 }

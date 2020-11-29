@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace AzMyeStoreNov2020.Core.Models
 {
-    public class ProductCategory
+    public class ProductCategory : BaseEntity
     {
-        public string Id { get; set; }
+        //public string Id { get; set; }  // commenting this out since this is implemented in the base class
         public string Category { get; set; }
 
-        public ProductCategory()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
+        // commenting this constructor out since the Id initialization is implemented in the base class
+        //public ProductCategory()
+        //{
+        //    this.Id = Guid.NewGuid().ToString();
+        //}
     }
 }
