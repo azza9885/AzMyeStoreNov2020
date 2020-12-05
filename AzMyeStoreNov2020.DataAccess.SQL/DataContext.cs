@@ -35,7 +35,7 @@ namespace AzMyeStoreNov2020.DataAccess.SQL
         // we have to tell the entity framework about how to connect to the database
         // we can have to the project in the default project dropdown the project
         // which contains our data context classes in this case DataAccess.SQL project
-        // to make it knows where to find the web.config file make sure Web.UI project
+        // to make sure it knows where to find the web.config file make sure Web.UI project
         // is set up as the start up project
 
         // list of commands to set up Database

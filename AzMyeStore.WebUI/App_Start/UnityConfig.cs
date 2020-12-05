@@ -1,6 +1,7 @@
 using AzMyeStoreNov2020.Core.Contracts;
 using AzMyeStoreNov2020.Core.Models;
 using AzMyeStoreNov2020.DataAccess.InMemory;
+using AzMyeStoreNov2020.DataAccess.SQL;
 using System;
 
 using Unity;
@@ -46,8 +47,17 @@ namespace AzMyeStore.WebUI
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
 
-            container.RegisterType<IRepository<Product>, InMemoryRepository<Product>>();
-            container.RegisterType<IRepository<ProductCategory>, InMemoryRepository<ProductCategory>>();
+            //container.RegisterType<IRepository<Product>, InMemoryRepository<Product>>();
+            //container.RegisterType<IRepository<ProductCategory>, InMemoryRepository<ProductCategory>>();
+
+            //above statements were prior to making the switch to SQL repository i.e while we were using InMemory repository
+
+            container.RegisterType<IRepository<Product>, SQLRepository<Product>>();
+            container.RegisterType<IRepository<ProductCategory>, SQLRepository<ProductCategory>>();
+
+            // one thing to notice is even though SQLRepository we are injecting a DataContext , in the unity context we are not 
+            // telling to specifically do that because the DI container actually figures out what needs to be injected and does it 
+            // for us
         }
     }
 }
